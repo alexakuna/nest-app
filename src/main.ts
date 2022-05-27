@@ -6,6 +6,7 @@ async function bootstrap() {
 
   const PORT = process.env.PORT || 3000
   const app = await NestFactory.create(AppModule);
+
   //Documentation by Swagger
   const config = new DocumentBuilder()
       .setTitle('Study Nest | Creating simple shop')
@@ -14,7 +15,6 @@ async function bootstrap() {
       .build()
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document)
-
   await app.listen(PORT, () => {
     console.log(`Server has been start on ${PORT}`)
   });
